@@ -58,20 +58,17 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
     scales: {
       r: {
         pointLabels: {
-          
           display: true,
           centerPointLabels: true,
           font: {
             size: 12,
             weight: "bold",
           },
-          
         },
-        
+
         max: 255,
       },
     },
-    
   };
 
   const data = {
@@ -106,14 +103,14 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
               &nbsp;#{formatNumber(pokemonDesc.id, 4)}
             </span>
           </div>
-          <div className="flex flex-col gap-5 md:flex-row">
+          <div className="flex flex-col items-center gap-5 md:flex-row">
             <Image
-              className="transition-all bg-gray-200/70 rounded-xl hover:scale-105 max-h-[350px] max-w-[350px]"
+              className="transition-all bg-gray-200/70 rounded-xl hover:scale-105 h-[250px] w-[250px] max-h-[250px] max-w-[250px]"
               priority
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonDesc.id}.png`}
               alt={pokemonDesc.name}
-              width={350}
-              height={350}
+              width={250}
+              height={250}
             />
             <div className="max-h-[350px] w-[350px] gap-3 flex flex-col">
               <span className="flex flex-col items-center">
@@ -142,9 +139,13 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-[500px] items-center relative">
+          <div className="flex flex-col w-[350px] md:w-[450px] items-center relative">
             <h1 className="absolute text-lg ">STATS</h1>
-            <PolarArea className="absolute -left-3" options={options} data={data} />
+            <PolarArea
+              className="absolute -left-3"
+              options={options}
+              data={data}
+            />
           </div>
         </section>
       </main>
