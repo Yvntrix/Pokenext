@@ -21,6 +21,18 @@ export const typeColor = {
   ghost: "bg-purple-800",
 };
 
+export const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+export const formatNumber = (num: number, size: number) => {
+  let formatted = num.toString();
+  while (formatted.length < size) {
+    formatted = "0" + formatted;
+  }
+  return formatted;
+};
+
 const Card = ({ name }: { name: string }) => {
   const [pokemon, setPokemon] = useState<any>({});
 
@@ -33,18 +45,6 @@ const Card = ({ name }: { name: string }) => {
     };
     getPokemon();
   }, [name]);
-
-  const capitalize = (str: string) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
-
-  const formatNumber = (num: number, size: number) => {
-    let formatted = num.toString();
-    while (formatted.length < size) {
-      formatted = "0" + formatted;
-    }
-    return formatted;
-  };
 
   return Object.keys(pokemon).length !== 0 ? (
     <Link

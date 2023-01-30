@@ -32,9 +32,36 @@ export default function Home() {
             All Pokemons up to date
           </h1>
           <p className="mt-2 text-base text-gray-400">
-            Pokenext is a Pokedex-like web application built around PokeApi
-            using NextJs and TailwindCSS
+            Pokenext is a Pokedex-like web application built around &nbsp;
+            <a
+              href="https://pokeapi.co/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            >
+              PokeApi
+            </a>
+            &nbsp; using &nbsp;
+            <a
+              href="https://nextjs.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            >
+              NextJs
+            </a>
+            &nbsp; and &nbsp;
+            <a
+              href="https://tailwindcss.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            >
+              TailwindCSS
+            </a>
+            &nbsp;
           </p>
+          
         </div>
         {pokemons.length !== 0 && (
           <section className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-3 min-h-[calc(100vh-73px)] p-4 ">

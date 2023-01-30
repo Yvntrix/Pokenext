@@ -24,7 +24,7 @@ export default function Document() {
         <meta name="twitter:image" content={data.imgUrl} />
       </Head>
       <body>
-        <header className="fixed z-10 flex items-end justify-between w-full p-4 border shadow-md bg-gray-50/80 border-b-gray-200">
+        <header className="fixed top-0 z-10 flex items-end justify-between w-full p-4 border shadow-md bg-gray-50/80 border-b-gray-200">
           <Link href={"/"}>
             <h1 className="text-2xl font-semibold text-gray-700">Pokénext</h1>
           </Link>
