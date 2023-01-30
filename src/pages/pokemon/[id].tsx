@@ -58,15 +58,20 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
     scales: {
       r: {
         pointLabels: {
+          
           display: true,
           centerPointLabels: true,
           font: {
-            size: 11,
+            size: 12,
+            weight: "bold",
           },
+          
         },
+        
         max: 255,
       },
     },
+    
   };
 
   const data = {
@@ -137,9 +142,9 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-[500px] items-center">
-            <h1 className="text-lg">Base Stats:</h1>
-            <PolarArea options={options} data={data} />
+          <div className="flex flex-col w-[500px] items-center relative">
+            <h1 className="absolute text-lg ">STATS</h1>
+            <PolarArea className="absolute -left-3" options={options} data={data} />
           </div>
         </section>
       </main>
