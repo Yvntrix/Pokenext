@@ -1,0 +1,7 @@
+{
+  "title": "Pokenext",
+  "description": "Pokenext is a Pokedex-like web application built around PokeApi using NextJs and TailwindCSS",
+  "url": "https://pokenext.vercel.app/",
+  "imgUrl": "https://pokenext.vercel.app/preview.png",
+  "domain": "pokenext.vercel.app"
+}
