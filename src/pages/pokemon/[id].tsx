@@ -110,7 +110,7 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
               width={350}
               height={350}
             />
-            <div className="min-h-[350px] w-[350px] gap-3 flex flex-col">
+            <div className="max-h-[350px] w-[350px] gap-3 flex flex-col">
               <span className="flex flex-col items-center">
                 {pokemonDesc.flavor_text_entries.length !== 0
                   ? removeEscapeCharacters(
