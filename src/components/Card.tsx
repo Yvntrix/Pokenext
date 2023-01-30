@@ -1,7 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import typeColor from "../../data/typeColor.json";
+export const typeColor = {
+  fire: "bg-orange-500",
+  grass: "bg-lime-500",
+  electric: "bg-yellow-500",
+  water: "bg-blue-500",
+  ground: "bg-yellow-700",
+  rock: "bg-yellow-600",
+  fairy: "bg-pink-500",
+  poison: "bg-purple-500",
+  bug: "bg-lime-700",
+  dragon: "bg-purple-700",
+  psychic: "bg-fuchsia-500",
+  flying: "bg-sky-300",
+  fighting: "bg-red-700",
+  normal: "bg-gray-400",
+  steel: "bg-slate-300",
+  ice: "bg-cyan-400",
+  ghost: "bg-purple-800",
+};
 
 const Card = ({ name }: { name: string }) => {
   const [pokemon, setPokemon] = useState<any>({});
@@ -53,7 +71,7 @@ const Card = ({ name }: { name: string }) => {
 
             return (
               <span
-                className={`${typeColor[name]} rounded-full px-2 py-1 text-gray-50 text-xs font-semibold`}
+                className={` ${typeColor[name]} rounded-full px-2 py-1 text-gray-50 text-xs font-semibold`}
                 key={type.name}
               >
                 {type.name.toString().toUpperCase()}

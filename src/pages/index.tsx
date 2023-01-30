@@ -42,9 +42,7 @@ export default function Home() {
               return <Card key={idx} name={pokemon.name} />;
             })}
             <InView
-              delay={200}
               as="div"
-              threshold={0.8}
               className="col-span-2 p-2 lg:col-span-5 md:col-span-4 sm:col-span-3"
               onChange={(inView) => {
                 if (inView) {
