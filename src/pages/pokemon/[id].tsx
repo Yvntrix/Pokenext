@@ -1,16 +1,25 @@
 import { capitalize, formatNumber, typeColor } from "@/components/Card";
+import {
+  BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  Title,
+  Tooltip,
+} from "chart.js";
 import Head from "next/head";
 import Image from "next/image";
-import {
-  Chart as ChartJS,
-  RadialLinearScale,
-  ArcElement,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { PolarArea } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
-ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export const getServerSideProps = async ({ params }: any) => {
   const resp = await fetch(
@@ -54,36 +63,59 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
       legend: {
         display: false,
       },
+      title: {
+        display: true,
+        text: `Base Stats of ${capitalize(pokemonDesc.name)}`,
+        font: {
+          size: 14,
+        },
+      },
     },
     scales: {
-      r: {
-        pointLabels: {
-          display: true,
-          centerPointLabels: true,
+      y: {
+        ticks: {
           font: {
             size: 12,
             weight: "bold",
           },
         },
-
         max: 255,
+      },
+      x: {
+        ticks: {
+          font: {
+            size: 12,
+            weight: "bold",
+          },
+        },
       },
     },
   };
 
   const data = {
-    labels: ["HP", "Attack", "Defense", "S Attack", "S Defense", "Defense"],
+    labels: ["HP", "Attack", "Defense", "Sp.Attack", "Sp.Defense", "Defense"],
     datasets: [
       {
         data: baseStats,
         backgroundColor: [
-          "rgba(255, 99, 132, 0.5)",
-          "rgba(54, 162, 235, 0.5)",
-          "rgba(255, 206, 86, 0.5)",
-          "rgba(75, 192, 192, 0.5)",
-          "rgba(153, 102, 255, 0.5)",
-          "rgba(255, 159, 64, 0.5)",
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(255, 159, 64, 0.2)",
+          "rgba(255, 205, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(201, 203, 207, 0.2)",
         ],
+        borderColor: [
+          "rgb(255, 99, 132)",
+          "rgb(255, 159, 64)",
+          "rgb(255, 205, 86)",
+          "rgb(75, 192, 192)",
+          "rgb(54, 162, 235)",
+          "rgb(153, 102, 255)",
+          "rgb(201, 203, 207)",
+        ],
+        borderWidth: 1
       },
     ],
   };
@@ -103,7 +135,7 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
               &nbsp;#{formatNumber(pokemonDesc.id, 4)}
             </span>
           </div>
-          <div className="flex flex-col items-center gap-5 md:flex-row">
+          <div className="flex flex-col items-center gap-5 md:items-start md:flex-row">
             <Image
               className="transition-all bg-gray-200/70 rounded-xl hover:scale-105 h-[250px] w-[250px] max-h-[250px] max-w-[250px]"
               priority
@@ -139,13 +171,8 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-[350px] md:w-[450px] items-center relative">
-            <h1 className="absolute text-lg ">STATS</h1>
-            <PolarArea
-              className="absolute -left-3"
-              options={options}
-              data={data}
-            />
+          <div className="flex flex-col w-[400px] md:w-[500px] items-center">
+            <Bar options={options} data={data} />
           </div>
         </section>
       </main>
