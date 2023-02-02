@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Head from "next/head";
 import { useState } from "react";
 import { InView } from "react-intersection-observer";
-
+import pokeball from "../../public/images/pokeball.png";
 export const getServerSideProps = async () => {
   const resp = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10");
   const data = await resp.json();
@@ -88,7 +88,7 @@ export default function Home({ data }: { data: any }) {
             >
               <img
                 className="w-24 h-24 mx-auto animate-spin"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1024px-Pok%C3%A9_Ball_icon.svg.png"
+                src={pokeball.src}
                 alt="loader"
               />
             </InView>
