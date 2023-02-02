@@ -54,7 +54,7 @@ const Card = ({ name }: { name: string }) => {
       <Image
         className={`rounded-lg p-2 bg-gray-200/70`}
         priority
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
+        src={pokemon.sprites.other["official-artwork"].front_default}
         alt={name}
         width={150}
         height={150}

@@ -1,5 +1,6 @@
 import { capitalize, formatNumber, typeColor } from "@/components/Card";
 import Chart from "@/components/Chart";
+import Header from "@/components/Header";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -49,6 +50,7 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
       <Head>
         <title>{`${capitalize(pokemonDesc.name)} | Pokénext`}</title>
       </Head>
+      <Header />
       <main className="w-full pt-[70px] h-screen  scrollbar-thumb-gray-300 scrollbar-thumb-rounded-full scrollbar-thin overflow-hidden">
         <section className="flex flex-col items-center gap-8">
           <div className="flex items-center justify-center p-3">
@@ -63,7 +65,7 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
             <Image
               className="transition-all bg-gray-200/70 rounded-xl hover:scale-105 h-[250px] w-[250px] max-h-[250px] max-w-[250px]"
               priority
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonDesc.id}.png`}
+              src={pokemon.sprites.other["official-artwork"].front_default}
               alt={pokemonDesc.name}
               width={250}
               height={250}

@@ -1,4 +1,5 @@
 import Card from "@/components/Card";
+import Header from "@/components/Header";
 import Head from "next/head";
 import { useState } from "react";
 import { InView } from "react-intersection-observer";
@@ -34,6 +35,7 @@ export default function Home({ data }: { data: any }) {
       <Head>
         <title>Pokenext</title>
       </Head>
+      <Header />
       <main className="flex flex-col items-center w-full h-screen bg-gray-50 scrollbar-thumb-gray-300 scrollbar-thumb-rounded-full scrollbar-thin">
         <div className="mt-[80px] py-2 px-4 ">
           <h1 className="text-2xl font-extrabold text-gray-700">
