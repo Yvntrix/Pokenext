@@ -6,10 +6,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <meta name="description" content={data.description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-
         <meta property="og:url" content={data.url} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={data.title} />
@@ -25,7 +21,7 @@ export default function Document() {
       </Head>
       <body>
         <header className="fixed top-0 z-10 flex items-end justify-between w-full p-4 border shadow-md bg-gray-50/80 border-b-gray-200">
-          <Link href={"/"}>
+          <Link href="/">
             <h1 className="text-2xl font-semibold text-gray-700">Pokénext</h1>
           </Link>
 

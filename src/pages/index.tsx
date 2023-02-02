@@ -1,25 +1,33 @@
 import Card from "@/components/Card";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { InView } from "react-intersection-observer";
-export default function Home() {
-  const [res, setRes] = useState<any>([]);
-  const [pokemons, setPokemons] = useState<any>([]);
+
+export const getServerSideProps = async () => {
+  const resp = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=10");
+  const data = await resp.json();
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+export default function Home({ data }: { data: any }) {
+  const [res, setRes] = useState<any>(data.next);
+  const [pokemons, setPokemons] = useState<any>(data.results);
 
   const fetchPokemons = async (url: string) => {
+    console.log("triggered");
     const resp = await fetch(url);
     const data = await resp.json();
-    setRes(data);
+    setRes(data.next);
     if (pokemons.length !== 0) {
       setPokemons([...pokemons, ...data.results]);
       return;
     }
     setPokemons(data.results);
   };
-
-  useEffect(() => {
-    fetchPokemons("https://pokeapi.co/api/v2/pokemon/?limit=10");
-  }, []);
 
   return (
     <>
@@ -61,10 +69,9 @@ export default function Home() {
             </a>
             &nbsp;
           </p>
-          
         </div>
         {pokemons.length !== 0 && (
-          <section className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-3 min-h-[calc(100vh-73px)] p-4 ">
+          <section className="grid grid-cols-2 gap-3 p-4 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 ">
             {pokemons.map((pokemon: any, idx: number) => {
               return <Card key={idx} name={pokemon.name} />;
             })}
@@ -73,7 +80,7 @@ export default function Home() {
               className="col-span-2 p-2 lg:col-span-5 md:col-span-4 sm:col-span-3"
               onChange={(inView) => {
                 if (inView) {
-                  fetchPokemons(res.next);
+                  fetchPokemons(res);
                 }
               }}
             >

@@ -4,12 +4,17 @@ import Head from "next/head";
 import Image from "next/image";
 
 export const getServerSideProps = async ({ params }: any) => {
-  const resp = await fetch(
-    `https://pokeapi.co/api/v2/pokemon-species/${params.id}`
-  );
-  const resp2 = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`);
+  const [pokemonDescRes, pokemonRes] = await Promise.all([
+    fetch(`https://pokeapi.co/api/v2/pokemon-species/${params.id}`),
+    fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`),
+  ]);
 
-  if (!resp.ok || !resp2.ok) {
+  const [pokemonDesc, pokemon] = await Promise.all([
+    pokemonDescRes.json(),
+    pokemonRes.json(),
+  ]);
+
+  if (!pokemonDescRes.ok || !pokemonRes.ok) {
     return {
       notFound: true,
     };
@@ -17,8 +22,8 @@ export const getServerSideProps = async ({ params }: any) => {
 
   return {
     props: {
-      pokemonDesc: await resp.json(),
-      pokemon: await resp2.json(),
+      pokemonDesc,
+      pokemon,
     },
   };
 };
@@ -42,7 +47,7 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
   return (
     <>
       <Head>
-        <title>{capitalize(pokemonDesc.name)} | Pokénext</title>
+        <title>{`${capitalize(pokemonDesc.name)} | Pokénext`}</title>
       </Head>
       <main className="w-full pt-[70px] h-screen  scrollbar-thumb-gray-300 scrollbar-thumb-rounded-full scrollbar-thin overflow-hidden">
         <section className="flex flex-col items-center gap-8">
