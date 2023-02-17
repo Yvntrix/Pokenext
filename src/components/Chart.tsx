@@ -55,7 +55,7 @@ const Chart = ({ name, baseStats }: { name: string; baseStats: number[] }) => {
   };
 
   const data = {
-    labels: ["HP", "Attack", "Defense", "Sp.Attack", "Sp.Defense", "Defense"],
+    labels: ["HP", "Attack", "Defense", "Sp.Attack", "Sp.Defense", "Speed"],
     datasets: [
       {
         data: baseStats,

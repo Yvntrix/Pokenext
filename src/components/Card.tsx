@@ -51,13 +51,21 @@ const Card = ({ name }: { name: string }) => {
       href={`pokemon/${name}`}
       className="flex flex-col items-center gap-1 p-4 transition-all rounded-lg shadow-lg bg-gray-50 hover:scale-105"
     >
-      <Image
+      {/* <Image
         className={`rounded-lg p-2 bg-gray-200/70`}
         priority
         src={pokemon.sprites.other["official-artwork"].front_default}
         alt={name}
         width={150}
         height={150}
+      /> */}
+      <img
+        loading="lazy"
+        height={150}
+        width={150}
+        className={`rounded-lg p-2 bg-gray-200/70`}
+        src={pokemon.sprites.other["official-artwork"].front_default}
+        alt={name}
       />
       <h1 className="text-xs font-semibold">{`#${formatNumber(
         pokemon.id,

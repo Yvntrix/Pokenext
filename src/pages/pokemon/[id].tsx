@@ -45,6 +45,7 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
     (stat: { base_stat: number }) => stat.base_stat
   );
 
+  console.log(pokemon.stats);
   return (
     <>
       <Head>
@@ -62,9 +63,17 @@ const Pokemon = ({ pokemonDesc, pokemon }: any) => {
             </span>
           </div>
           <div className="flex flex-col items-center gap-5 md:items-start md:flex-row">
-            <Image
+            {/* <Image
               className="transition-all bg-gray-200/70 rounded-xl hover:scale-105 h-[250px] w-[250px] max-h-[250px] max-w-[250px]"
               priority
+              src={pokemon.sprites.other["official-artwork"].front_default}
+              alt={pokemonDesc.name}
+              width={250}
+              height={250}
+            /> */}
+            <img
+              loading="lazy"
+              className="transition-all bg-gray-200/70 rounded-xl hover:scale-105 h-[250px] w-[250px] max-h-[250px] max-w-[250px]"
               src={pokemon.sprites.other["official-artwork"].front_default}
               alt={pokemonDesc.name}
               width={250}
